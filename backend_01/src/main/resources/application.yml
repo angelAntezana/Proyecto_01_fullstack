@@ -1,0 +1,14 @@
+spring:
+ datasource:
+  url: jdbc:mysql://localhost/proyecto_01?
+  username: usuarioprueba
+  password: usuarioprueba
+ jpa:
+  hibernate:
+   ddl-auto: create-drop
+  show-sql: true
+  properties:
+   hibernate:
+    format_sql: true
+  database: MYSQL
+  database-platform: org.hibernate.dialect.MySQLDialect
