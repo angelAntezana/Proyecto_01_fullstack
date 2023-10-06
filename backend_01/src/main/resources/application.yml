@@ -12,3 +12,12 @@ spring:
     format_sql: true
   database: MYSQL
   database-platform: org.hibernate.dialect.MySQLDialect
+
+
+application:
+ security:
+  jwt:
+   secret-key: sLavaQE+VE+DptoJO3tUcITz+qrOsz8eVEsr4/yptXbfdf68Wbg1TIqtrCv5LjCPNxmz4sA8xGUfynfDbjfck83uMmEaXIXYS/EnVgweQNd3qTuRDUuq6HcBUbw3yDRnZ8nOpvqzw9rynA9x/7e+pW/jGV4hY9ZOogmIBq3e+aPA4b+spHy19D3c5ktSM2HZlXjR4zhdFUbfoas0hbuVf/dZbLxIgKH34q/Fz+DLzKjLZzPG2EzW31stAEs/vVaxe8WGwh7hI4ciXCo9W6ZaZVabeDWPh2BSxElsnfsuuaehP1EA3CIfpX2CMS4AFa53yFCymHKl8kOcyZ8eCbiX0f8Q+AtVA3en/nIK1l+OKAE=
+   expiration: 86400000
+   refresh-token:
+    expiration: 604800000

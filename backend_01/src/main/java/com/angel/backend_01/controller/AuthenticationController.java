@@ -1,5 +1,7 @@
 package com.angel.backend_01.controller;
 
+import java.io.IOException;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,6 +13,8 @@ import com.angel.backend_01.dto.AuthenticationResponse;
 import com.angel.backend_01.dto.RegisterRequest;
 import com.angel.backend_01.service.AuthenticationService;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -25,9 +29,14 @@ public class AuthenticationController {
         return ResponseEntity.ok(service.register(request));
     }
 
-      @PostMapping("/authenticate")
+    @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse>authenticate(@RequestBody AuthenticationRequest request){
         return ResponseEntity.ok(service.authenticate(request));
+    }
+
+    @PostMapping("/refresh-token")
+    public void refreshToken(HttpServletRequest request,HttpServletResponse response) throws IOException{
+        service.refreshToken(request,response);
     }
 
 }
