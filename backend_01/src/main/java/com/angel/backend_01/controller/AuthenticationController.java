@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.angel.backend_01.dto.AuthenticationRequest;
 import com.angel.backend_01.dto.AuthenticationResponse;
 import com.angel.backend_01.dto.RegisterRequest;
-import com.angel.backend_01.service.AuthenticationService;
+import com.angel.backend_01.service.impl.UsuarioServiceImpl;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -22,7 +22,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AuthenticationController {
     
-    private final AuthenticationService service;
+    private final UsuarioServiceImpl service;
 
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse>register(@RequestBody RegisterRequest request){

@@ -1,4 +1,4 @@
-package com.angel.backend_01.service;
+package com.angel.backend_01.service.impl;
 
 import java.io.IOException;
 
@@ -26,7 +26,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class AuthenticationService {
+public class UsuarioServiceImpl {
 
     private final UsuarioRepository usuarioRepository;
     private final TokenRepository tokenRepository;
