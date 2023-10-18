@@ -1,12 +1,12 @@
 <template>
     <div>
-        <main class="col-3 m-auto">
+      <main class="col-3 m-auto">
       <form @submit.prevent="procesarFormulario">
-        <h1 class="h3 mb-3 fw-normal text-white">{{ acceder ? 'Login':'Registro' }}</h1>
+        <h1 class="h3 mb-3 fw-normal text-black">Login</h1>
   
         <div class="form-floating">
           <input
-            v-model="data.username"
+            v-model="login.email"
             type="text"
             class="form-control"
             id="floatingInput"
@@ -15,17 +15,17 @@
           <label for="floatingInput"><i class="bi bi-person-circle"></i>  Username</label>
         </div>
         <div class="form-floating">
-          <input v-model="data.password" type="password" class="form-control" id="floatingPassword" placeholder="Password" />
+          <input v-model="login.password" type="password" class="form-control" id="floatingPassword" placeholder="Password" />
           <label for="floatingPassword"><i class="bi bi-file-lock"></i> Password</label>
         </div>
   
-        <button class="w-100 btn btn-lg text-white" type="submit">Iniciar sesión</button>
-        <p v-if="errorNombre" class="error text-center">{{ errorNombre }}</p>
+        <button class="w-100 btn btn-lg text-black" type="submit">Iniciar sesión</button>
+        <!-- <p v-if="errorNombre" class="error text-center">{{ errorNombre }}</p>
         <p v-if="errorPassword" class="error text-center">{{ errorPassword }}</p>
-        <p class="error text-center">{{ error }}</p>
+        <p class="error text-center">{{ error }}</p> -->
       </form>
       <div class="text-center p-t-136">
-            <RouterLink to="/register" class="btn me-2 text-white">Registrar
+            <RouterLink to="/register" class="btn me-2 text-black">¿No tienes cuenta?
               <i class="bi bi-arrow-right"></i>
             </RouterLink>
 
@@ -36,15 +36,8 @@
 </template>
 
 <script setup>
-  import { reactive, ref } from 'vue';
+  import { reactive } from 'vue';
 
-const acceder = ref(true);
-const registrar = reactive({
-    firstname:"",
-    lastname:"",
-    email:"",
-    password:""
-});
 const login = reactive({
     email:"",
     password:""
