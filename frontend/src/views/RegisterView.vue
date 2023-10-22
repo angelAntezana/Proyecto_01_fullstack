@@ -45,9 +45,12 @@
         <p class="error text-center">{{ error }}</p> -->
       </form>
       <div class="text-center p-t-136">
-            <RouterLink to="/login" class="btn me-2 text-black">¿Ya tienes cuenta?
+            <RouterLink to="/login" @click="permiterIrALogin" class="btn me-2 text-black">¿Ya tienes cuenta?
               <i class="bi bi-arrow-right"></i>
             </RouterLink>
+            <RouterLink to="/" class="btn me-2 text-black">HOME
+              <i class="bi bi-house"></i>
+            </RouterLink> 
 
 					</div>
 
@@ -58,13 +61,21 @@
 <script setup>
 import axios from 'axios';
 import { reactive } from 'vue';
+import { useRouter } from 'vue-router';
+import { useLoginStore } from '../stores/counter';
 
+const router = useRouter();
+const store = useLoginStore();
 const registrar = reactive({
     firstname:"",
     lastname:"",
     email:"",
     password:""
 });
+
+const permiterIrALogin = ()=>{
+  store.register()
+}
 
 const config = {
     headers: {
@@ -76,11 +87,16 @@ const procesarFormulario = ()=>{
 
 axios.post("http://localhost:8080/api/v1/auth/register",JSON.stringify(registrar),config)
         .then((response) => {
-            console.log(`Todo OK.Usuario creado`);
-            console.log(response.data)
-            //localStorage.setItem("session","sesion iniciada");
-            // localStorage.setItem("tokenDemo",token)
-            // router.push('/')
+            store.setTokens(response.data.access_token,response.data.refresh_token);
+            router.push({
+            name: "login",
+            query: {
+              at: response.data.access_token,
+              rt: response.data.refresh_token,
+              state: "todo OK",
+              preview: true
+            }
+          })
         }).catch(e => {
         console.log(`OCURRIO UN ERROR AL CREAR Usuario ${e}`)
         });
